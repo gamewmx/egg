@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/public/css/default.css"/>
+    <title>demo</title>
+</head>
+<body>
+<!--    <h1>Welcome to The International</h1>-->
+<% include header.html%>
+    <h2>fuck <%=name%><%=id%></h2>
+    <h3>age:<%=age%></h3>
+    <h3>skills:</h3>
+    <ul>
+        <%for(var i=0;i<skills.length;i++){%>
+        <li><%=skills[i]%></li>
+        <%}%>
+    </ul>
+
+</body>
+</html>
