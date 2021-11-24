@@ -31,13 +31,19 @@ module.exports = appInfo => {
   };
 
   config.view = {
-    mapping:{
-      ".html":"ejs"
-    }
-  }
+    mapping: {
+      '.html': 'ejs',
+    },
+  };
 
   config.ejs = {
 
+  };
+
+  config.session = {
+    key:"SESSION",
+    renew:true,
+    maxAge:60*1000
   }
 
   // config.static = {

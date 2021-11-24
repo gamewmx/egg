@@ -8,6 +8,12 @@ class DemoService extends Service {
       id, name: 'cmq', age: 18,
     };
   }
+
+  async getBoy(id){
+    return {
+      id,name:'wmx',age:18
+    }
+  }
 }
 
 module.exports = DemoService;

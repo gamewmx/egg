@@ -8,14 +8,61 @@
 <body>
 <!--    <h1>Welcome to The International</h1>-->
 <% include header.html%>
+<div>
+    <button onClick="add()">addCookie</button>
+</div>
+<div>
+    <button onClick="del()">deleteCookie</button>
+</div>
+<div>
+    <button onClick="edit()">editCookie</button>
+</div>
+<div>
+    <button onClick="select()">selectCookie</button>
+</div>
+<h1><%=time%></h1>
     <h2>fuck <%=name%><%=id%></h2>
     <h3>age:<%=age%></h3>
     <h3>skills:</h3>
+    <h3><%=counter%></h3>
     <ul>
         <%for(var i=0;i<skills.length;i++){%>
         <li><%=skills[i]%></li>
         <%}%>
     </ul>
-
+    <script>
+        function add(){
+            fetch("/add",{
+                method:'post',
+                headers:{
+                    "Content-type":"application/json"
+                }
+            })
+        }
+        function del(){
+            fetch("/del",{
+                method:'post',
+                headers:{
+                    "Content-type":"application/json"
+                }
+            })
+        }
+        function edit(){
+            fetch("/edit",{
+                method:'post',
+                headers:{
+                    "Content-type":"application/json"
+                }
+            })
+        }
+        function select(){
+            fetch("/select",{
+                method:'post',
+                headers:{
+                    "Content-type":"application/json"
+                }
+            })
+        }
+    </script>
 </body>
 </html>
