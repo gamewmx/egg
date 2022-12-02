@@ -10,6 +10,7 @@ class DemoController extends Controller {
 
   async index() {
     const { ctx ,app } = this;
+    console.log(ctx.session.counter)
     await ctx.render('demo.html', {
       time:app.TimeAttr,
       id: ctx.query.id,
@@ -39,7 +40,19 @@ class DemoController extends Controller {
   // 严格传参模式
   async getBoy() {
     const { ctx } = this;
-    ctx.body = '大哥你好，我是:' + ctx.params.name + ',今年' + ctx.params.age + '岁';
+    console.log(ctx.params())
+    ctx.body = '大哥你好，我是:' + ctx.params('name') + ',今年' + ctx.params('age') + '岁';
+  }
+
+  // 自由模式
+  async free() {
+    const { ctx } = this;
+    console.log(ctx.params(),ctx.session)
+    ctx.response.token="localTest"
+    // ctx.body = '大哥你好，我是:' + ctx.params('name') + ',今年' + ctx.params('age') + '岁'+ ctx.session.counter;
+    ctx.body = {
+      token:ctx.request.token
+    };
   }
 
   // post请求
@@ -65,7 +78,10 @@ class DemoController extends Controller {
   }
   async edit() {
     const ctx = this.ctx;
-    ctx.cookies.set("user","cmq")
+    ctx.cookies.set("user","cmq",{
+      maxAge:1000*10,
+      httpOnly:false
+    })
     ctx.session.userName = 'cmq'
     ctx.body = {
       status: 200,
@@ -80,6 +96,7 @@ class DemoController extends Controller {
 
   async newContext(){
     const ctx = this.ctx;
+    console.log(ctx.query,ctx.request)
     ctx.body = ctx.params()
   }
 
